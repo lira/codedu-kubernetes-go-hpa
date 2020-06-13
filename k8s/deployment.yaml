@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-hpa
+spec:
+  selector:
+    matchLabels:
+      app: go-hpa
+  template:
+    metadata:
+      labels:
+        app: go-hpa 
+    spec:
+      containers:
+      - name: go-hpa
+        image: lira/go-hpa
+        resources:
+          requests:
+            cpu: "50m"
+            memory: "100Mi"
+          limits:
+            cpu: "100m"
+            memory: "150Mi"
